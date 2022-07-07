@@ -1,0 +1,68 @@
+This README contains a description of the headers for all GeneEnrich output files.
+
+The code used to generate the files described here is publicly available: <https://github.com/segrelabgenomics/GeneEnrich>.
+
+For questions or comments regarding this tool, please contact Andrew Hamel,andrew_hamel@meei.harvard.edu, and Ayellet Segre at ayellet_segre@meei.harvard.edu
+
+# (1)
+# Main results file:
+# Gene Set enrichment results for all gene sets tested
+
+GeneEnrich_gs_results_{prefix}_{resource}_{date}.tsv
+===========
+
+resource                              string        Resource identifier
+gene_set                              string        Gene set tested in resource
+total_number_genes                    integer       Number of genes in given gene set
+number_significant_genes              integer       Number of significant genes in gene set 
+fraction_significant_genes            float         Ratio of significant genes to total number of genes in gene set
+hypergeometric_pval                   float         Hypergeometric p-value
+empirical_pval                        float         Empirical gene set enrichment p-value
+bh_adjusted_pval                      float         Benjamini-Hochberg (BH) adjusted p-value (BH FDR); The BH FDR is recommended over the empirical FDR.
+fdr_qval                              float         Empirical FDR
+number_permutations                   integer       Number of permutations performed per gene set
+pass_nominal_significance             boolean       Indicates whether gene set enrichment p-value passed nominal significance (cutoff defined by user, default: P<0.05)
+pass_bh_significance                  boolean       Indicates whether gene set enrichment p-value passed BH FDR significance (cutoff defined by user, default: FDR<0.1)
+pass_fdr_significance                 boolean       Indicates enrichment p-value passed empirical FDR significance (cutoff defined by user, default: FDR<0.1)
+significant_genes                     string        List of significant genes in gene set, semicolon-separated
+
+# (2)
+# Gene-Centric table
+
+GeneEnrich_gene_centric_table_{prefix}_{resource}_{date}.tsv
+===========
+
+gene                                           string        Gene in HGNC format      
+ensembl_gene_id                                string        Gene in Ensembl ID format without decimal version
+variant                                        string        Variant (e.g., best eQTL or sQTL per e/sGene) for significant gene if found in significant\_genes input file
+intron_cluster                                 string        Intron cluster for significant gene, if considering sGenes, if found in significant\_genes input file
+number_gene_sets_pass_nominal_significance     integer       Number of gene sets with given gene whose gene set enrichment p-value passed nominal significance
+most_significant_gene_set_membership           string        Gene set with most significant enrichment p-value of all gene sets that the given gene belongs to
+most_significant_gene_set_empirical_p_value    float         Enrichment p-value of most significant gene set
+gene_set_membership                            string        List of gene sets in which a gene falls, semicolon-delimited
+pass_nominal_significance_gene_sets            string        List of gene sets in which a gene falls that passes nominal significance, semicolon-delimited, NA if none       
+pass_bh_significance_gene_sets                 string        List of gene sets in which a gene falls that passes BH FDR significance (defined by user, default: BH FDR<0.1), semicolon-delimited, NA if none
+pass_fdr_significance_gene_sets                string        List of gene sets in which a gene falls that passes empirical FDR significance (defined by user, default: FDR<0.1), semicolon-delimited, NA if none
+resource                                       string        Resource identifier
+
+# (3)
+# Significant gene sets by significant gene table
+
+GeneEnrich_significant_gs_genes_{prefix}_{date}.tsv
+===========
+
+resource                        string        Resource identifier
+gene_set                        string        Name of gene set
+total_number_genes              integer       Total number of genes per gene set
+ensembl_gene_id                 string        Significant gene in Ensembl ID format without decimal version
+EntrezID                        integer       Significant gene in EntrezID format if found in resource file
+gene_name                       string        Significant gene in HGNC format
+significant_gene                boolean       Indicates if gene is significant (Default: TRUE)
+pass_nominal_significance       boolean       Indicates if gene set passed nominal significance threshold
+pass_bh_significance            boolean       Indicates if gene set passed BH FDR significance threshold (defined by user, default: BH FDR<0.1)
+pass_fdr_significance           boolean       Indicates if gene set passed FDR significance threshold (defined by user, default: FDR<0.1)
+variant                         string        Variant (e.g., best eQTL or sQTL per e/sGene) for significant gene if found in significant\_genes file
+intron_cluster                  string        Intron cluster for significant gene, if considering sGenes, if found in significant\_genes file
+
+
+
