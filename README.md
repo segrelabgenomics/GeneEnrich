@@ -276,5 +276,5 @@ Hierarchical clustering was performed on both plots on rows and columns using th
 
 ## Method described in manuscript:
 
-Andrew R. Hamel†, John M. Rouhana†, Alvaro N. Barbeira, Hae Kyung Im, Ayellet V. Segrè. Tissue-dependent expression and splicing QTL and gene-set enrichment analysis of complex trait associations uncovers disease mechanisms Submitted 2022.
-
+Andrew R. Hamel†, John M. Rouhana†, Alvaro N. Barbeira, Hae Kyung Im, Ayellet V. Segrè. Tissue-dependent expression and splicing QTL and 
+gene-set enrichment analysis of complex trait associations uncovers disease mechanisms. Submitted 2022. † Co-first authors.
