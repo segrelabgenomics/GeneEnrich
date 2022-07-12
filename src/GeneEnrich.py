@@ -978,6 +978,8 @@ def main():
 
     #To add extra columns in gene tables
     concat_later = pd.concat([sig_genes_df, null_genes_df], sort = True)
+    concat_later = concat_later.reset_index(drop=True)
+    concat_later = concat_later.drop_duplicates(["gene"], keep="first")
 
     #find which genes are expressed in our tissue
     sig_egenes, len_sig_egenes = extract_genes_expressed(sig_genes_df)
